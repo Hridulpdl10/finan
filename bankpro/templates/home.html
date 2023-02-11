@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+<form method="POST">
+{% csrf_token %}  <!-- protection against cross-site request forgery -->
+<!-- form variable containing the login form fields -->
+{{ form.as_p }}
+<!-- submit button for login form -->
+<button type="submit">Submit</button>
+<a href="{% url 'logout' %}"><button type="button">Logout</button></a>
+</form>
+{% endif %}
+{% endblock %}
